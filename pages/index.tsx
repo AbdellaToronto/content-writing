@@ -1,8 +1,12 @@
 import * as React from 'react'
-import {Home} from '../src/components/Home'
-import {Layout} from '../src/components/Layout'
+import dynamic from 'next/dynamic';
+
+const MarkdownWriter = dynamic(() => import("../src/components/markdown-writer/markdown-writer.component"), {
+  ssr: false
+});
 
 export default props =>
-  <Layout>
-    <Home/>
-  </Layout>
+  <div>
+    <MarkdownWriter />
+  </div>
+

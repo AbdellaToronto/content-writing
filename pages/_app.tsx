@@ -6,10 +6,10 @@ import {getStore} from '../src/store'
 
 export default class extends App {
   static async getInitialProps({Component, router, ctx}) {
-    const server = !!ctx.req
-    const store = getStore(undefined, server)
-    const state = store.getState()
-    const out = {state, server} as any
+    const server = !!ctx.req;
+    const store = getStore(undefined, server);
+    const state = store.getState();
+    const out = {state, server} as any;
 
     if (Component.getInitialProps) {
       return {
@@ -24,8 +24,8 @@ export default class extends App {
   }
 
   render() {
-    const {props} = this as any
-    const {Component, pageProps} = props
+    const {props} = this as any;
+    const {Component, pageProps} = props;
 
     return (
       <Container>

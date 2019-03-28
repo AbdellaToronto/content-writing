@@ -13,6 +13,23 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 // @ts-ignore
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+// @ts-ignore
+import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
+// @ts-ignore
+import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
+// @ts-ignore
+import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
+// @ts-ignore
+import Image from '@ckeditor/ckeditor5-image/src/image';
+// @ts-ignore
+import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+// @ts-ignore
+import Link from '@ckeditor/ckeditor5-link/src/link';
+// @ts-ignore
+import List from '@ckeditor/ckeditor5-list/src/list';
+// @ts-ignore
+import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
+// @ts-ignore
 
 
 // Simple plugin which loads the data processor.
@@ -30,9 +47,38 @@ export default () => {
           Essentials,
           Bold,
           Italic,
-          HeadingPlugin
+          HeadingPlugin,
+          Image,
+          ImageCaption,
+          ImageStyle,
+          ImageToolbar,
+          ImageUpload,
+          Link,
+          List,
+          Paragraph
         ],
-        toolbar: ['heading', '|', 'bold', 'italic'],
+        toolbar: [
+          'heading',
+          '|',
+          'bold',
+          'italic',
+          'link',
+          'bulletedList',
+          'numberedList',
+          'imageUpload',
+          'pre',
+          'blockQuote',
+          'undo',
+          'redo'
+        ],
+        image: {
+          toolbar: [
+            'imageStyle:full',
+            'imageStyle:side',
+            '|',
+            'imageTextAlternative'
+          ]
+        },
       }}
       data="Hello"
       onInit={(editor: any) => {

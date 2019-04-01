@@ -14,16 +14,6 @@ import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 // @ts-ignore
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 // @ts-ignore
-import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
-// @ts-ignore
-import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
-// @ts-ignore
-import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
-// @ts-ignore
-import Image from '@ckeditor/ckeditor5-image/src/image';
-// @ts-ignore
-import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
-// @ts-ignore
 import Link from '@ckeditor/ckeditor5-link/src/link';
 // @ts-ignore
 import List from '@ckeditor/ckeditor5-list/src/list';
@@ -31,13 +21,24 @@ import List from '@ckeditor/ckeditor5-list/src/list';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 // @ts-ignore
 
+interface Editor  {
+  getData: () => string
+}
+
+interface MarkdownEditorProps {
+  data?: string;
+  onInit?: (event: any, editor: Editor) => void;
+  onBlur?: (editor: Editor) => void;
+  onChange?: (editor: Editor) => void;
+  onFocus?: (editor: Editor) => void;
+}
 
 // Simple plugin which loads the data processor.
 function Markdown(editor: any) {
   editor.data.processor = new GFMDataProcessor();
 }
 
-export default () => {
+const MarkdownWriter: React.FunctionComponent<MarkdownEditorProps> = (props) => {
   return <CKEditor
       editor={ClassicEditorBase}
       config={{
@@ -48,11 +49,6 @@ export default () => {
           Bold,
           Italic,
           HeadingPlugin,
-          Image,
-          ImageCaption,
-          ImageStyle,
-          ImageToolbar,
-          ImageUpload,
           Link,
           List,
           Paragraph
@@ -70,31 +66,10 @@ export default () => {
           'blockQuote',
           'undo',
           'redo'
-        ],
-        image: {
-          toolbar: [
-            'imageStyle:full',
-            'imageStyle:side',
-            '|',
-            'imageTextAlternative'
-          ]
-        },
+        ]
       }}
-      data="Hello"
-      onInit={(editor: any) => {
-        // You can store the "editor" and use when it is needed.
-        console.log('Editor is ready to use!', editor);
-      }}
-      onChange={(event: any, editor: any) => {
-        const data = editor.getData();
-        ;
-        console.log({event, editor, data});
-      }}
-      onBlur={(editor: any) => {
-        console.log('Blur.', editor);
-      }}
-      onFocus={(editor: any) => {
-        console.log('Focus.', editor);
-      }}
+    {...props}
     />
 };
+
+export default MarkdownWriter;

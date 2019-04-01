@@ -5,10 +5,7 @@ import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
 import {persistStore, autoRehydrate} from 'redux-persist';
 import {session} from './redux/system';
-import { createEpicMiddleware } from 'redux-observable';
-import {rootEpic} from './redux/epics';
-
-const epicMiddleware = createEpicMiddleware();
+import {epicMiddleware, rootEpic} from './redux/epics';
 
 export const getStore = (state, isServer?): Store<RootState> => {
   if (isServer && typeof window === 'undefined') {

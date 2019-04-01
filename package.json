@@ -45,6 +45,7 @@
     "react-ga": "^2.5.3",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
+    "redux-form": "^8.1.0",
     "redux-logger": "^3.0.6",
     "redux-observable": "^1.1.0",
     "redux-persist": "^4.9.1",

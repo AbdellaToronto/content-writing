@@ -9,3 +9,9 @@ export const FAIL: FAIL       = 2;
 export type REQUEST = 0;
 export type SUCCESS = 1;
 export type FAIL = 2;
+
+
+export const genericActionCreator = type => payload => ({
+  type,
+  payload
+});

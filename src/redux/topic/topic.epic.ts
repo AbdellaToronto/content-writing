@@ -7,5 +7,5 @@ export const updateTopicDraft: EpicType<UpdateTopicAction> = ($action, _, {fireb
   $action.pipe(
     ofType(TOPIC_TYPES.UPDATE_TOPIC_DRAFT),
     switchMap(({payload}) => firebase.save(payload)),
-    map((x: any) => x)
+    map((x: any) => ({type: 'Did the thing'}))
   );

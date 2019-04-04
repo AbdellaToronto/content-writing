@@ -3,6 +3,7 @@ import {ajax} from "rxjs/ajax";
 import {Observable} from "rxjs";
 import {Action} from "redux";
 import {updateTopicDraft} from "../topic/topic.epic";
+import {of} from "rxjs/internal/observable/of";
 
 interface EpicMiddlewareDependencies {
   ajax: any;
@@ -16,7 +17,7 @@ export const rootEpic = combineEpics(
 export const epicMiddleware = createEpicMiddleware({
   dependencies: {
     ajax,
-    firebase: {save: (x) => x}
+    firebase: {save: (x) => of(x)}
   }
 });
 
